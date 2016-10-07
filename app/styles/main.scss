@@ -1,7 +1,6 @@
 $icon-font-path: '../fonts/';
 
 // bower:scss
-@import "bower_components/bootstrap-sass/assets/stylesheets/_bootstrap.scss";
 // endbower
 
 .browserupgrade {
@@ -90,4 +89,38 @@ body {
   .jumbotron {
     border-bottom: 0;
   }
+}
+
+@import 'utitlities';
+
+body{
+	//margin-top: 50px;
+	padding:0px;
+	.navbar{
+		margin:0px;
+		border-bottom: 1px solid lightgray;
+		.navbar-right{
+			margin:0px !important;
+		}
+	}
+	main{
+		section{
+			&#home{
+				height: 100vh;
+				position: relative;
+				form{
+					width:100%;
+				}
+			}
+			&#jobs{
+			
+			}
+		}
+		aside{
+			&.sidebar{
+				
+			}
+		}
+		
+	}
 }
