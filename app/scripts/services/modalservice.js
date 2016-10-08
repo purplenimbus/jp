@@ -8,22 +8,23 @@
  * Service in the jpApp.
  */
 angular.module('jpApp',[])
-  .service('modalService', function ($q,$scope,$compile) {
+  .service('modalService', function ($q,$compile) {
     // AngularJS will instantiate a singleton by calling "new" on this function
 	return	{
-		modal	:	function(title,body,footer,$scope){
+		modal	:	function(type,title,body,footer,$scope){
+						
 			var str	=	'',
 				deferred	=	$q.defer();
 			
 			str	+=	'<div id="modal" class="modal fade" tabindex="-1" role="dialog">';
-			str	+=		'<div class="modal-dialog" role="document">';
+			str	+=		'<div class="modal-dialog '+((type === 'small') ? 'modal-sm' : ( type === 'large ') ? 'modal-lg' : '' )+'" role="document">';
 			str	+=			'<div class="modal-content">';
 			str	+=				'<div class="modal-header">';
 			str	+=					'<button type="button" class="close" data-dismiss="modal" aria-label="Close" ng-click="closeModal($event)"><span aria-hidden="true">&times;</span></button>';
 			str	+=					'<h4 class="modal-title">'+title+'</h4>';
 			str	+=				'</div>';
 			str	+=				'<div class="modal-body">'+body+'</div>';
-			str	+=				footer ? '<div class="modal-footer">'+footer+'</div>' : null;
+			str	+=				footer ? '<div class="modal-footer">'+footer+'</div>' : '';
 			str	+=			'</div>';
 			str	+=		'</div>';
 			str	+=	'</div>';
@@ -32,7 +33,9 @@ angular.module('jpApp',[])
 			
 			deferred.resolve(str);
 			
-			angular.element('#modal').modal('show');
+			angular.element('#modal').modal('show').on('hidden.bs.modal', function () {
+				this.remove();
+			});
 			
 			return deferred.promise;
 		}
