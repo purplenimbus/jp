@@ -8,7 +8,7 @@
  * Controller of the jpApp
  */
 angular.module('jpApp')
-  .controller('UserCtrl', function ($scope,modalService,elements,validation) {
+  .controller('UserCtrl', function ($scope,modalService,elements,validation,auth) {
     	$scope.signIn	=	function(){
 			var modalType	=	'small',
 				modalTitle	=	'Login',
@@ -17,11 +17,11 @@ angular.module('jpApp')
 				
 				modalBody	+=	'<form>';
 				modalBody	+=	'<div class="row form-group">';
-				modalBody	+=	elements.column(12,elements.form.inputGroup(elements.glyph('user'),{ 	type		:	'text',	
+				modalBody	+=	elements.column(12,elements.form.inputGroup(elements.glyph('user'),{ 	type		:	'email',	
 														cls			:	'input-lg'	,	
-														placeholder	:	'Username'	,	
+														placeholder	:	'Email'	,	
 														model		:	'',
-														name		:	'Username',
+														name		:	'email',
 														required	:	true
 													}));
 				modalBody	+=	'</div>';
@@ -52,7 +52,14 @@ angular.module('jpApp')
 					//remove spinner
 					angular.element('.spinner').remove();
 					
-					console.log('Validation Result',result);
+					if(result.valid){
+						auth.authenticate(form.serializeArray()).then(function(result){
+							console.log('Authentication Result',result);
+						});
+					}else{
+						console.log(result);
+					}	
+					
 				});
 		};
 		

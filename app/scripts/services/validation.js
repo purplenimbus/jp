@@ -38,7 +38,6 @@ angular.module('jpApp')
 									validatedCount++;
 								}else{
 									//add error validation class to form element
-									console.log(element);
 									element.parent().removeClass('has-success')
 													.removeClass('has-error')
 													.addClass('has-error');
@@ -67,7 +66,7 @@ angular.module('jpApp')
 				if(validatedCount	===	elemCount){
 					deferred.resolve({	valid	:	true	,	form	:	form	});
 				}else{
-					deferred.reject({	valid	:	false	,	form	:	form	});
+					deferred.resolve({	valid	:	false	,	form	:	form	});
 				}
 					
 				
