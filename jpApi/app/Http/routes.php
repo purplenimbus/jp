@@ -11,10 +11,6 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
-
 
 Route::group(['prefix'	=>	'api'],function(){
 	Route::resource('authenticate',	'AuthenticateController',	['only'	=>	['index']]);

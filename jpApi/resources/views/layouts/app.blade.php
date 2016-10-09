@@ -1,9 +1,34 @@
-<!doctype html> <html> <head> <meta charset="utf-8"> <title></title> <meta name="description" content=""> <meta name="viewport" content="width=device-width"> <!-- Place favicon.ico and apple-touch-icon.png in the root directory --> <link rel="stylesheet" href="public/styles/vendor.1148a0ca.css"> <link rel="stylesheet" href="public/styles/main.9430f033.css"> </head> <body ng-app="jpApp"> <!--[if lte IE 8]>
-      <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
-    <![endif]--> <!-- Add your site or application content here --> <div ng-include="'partials/_nav.html'"></div> <div class="container-fluid"> <div ng-view=""></div> </div> <!-- Google Analytics: change UA-XXXXX-X to be your site's ID --> <script>!function(A,n,g,u,l,a,r){A.GoogleAnalyticsObject=l,A[l]=A[l]||function(){
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Laravel</title>
+
+    <link rel="stylesheet" href="styles/vendor.1148a0ca.css"> 
+	
+	<link rel="stylesheet" href="styles/main.9430f033.css">
+</head>
+<body ng-app="jpApp">
+    <div ng-include="'partials/_nav.html'"></div>
+
+    <div class="container-fluid">
+		<div ng-view=""></div>
+    </div>
+
+    <!-- Google Analytics: change UA-XXXXX-X to be your site's ID -->
+    <script>
+       !function(A,n,g,u,l,a,r){A.GoogleAnalyticsObject=l,A[l]=A[l]||function(){
        (A[l].q=A[l].q||[]).push(arguments)},A[l].l=+new Date,a=n.createElement(g),
        r=n.getElementsByTagName(g)[0],a.src=u,r.parentNode.insertBefore(a,r)
        }(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
 
        ga('create', 'UA-XXXXX-X');
-       ga('send', 'pageview');</script> <script src="public/scripts/vendor.eef533e0.js"></script> <!-- build:js({.tmp,app}) scripts/scripts.js --> <script src="public/scripts/app.js"></script> <script src="public/scripts/controllers/main.js"></script> <script src="public/scripts/controllers/about.js"></script> <script src="public/scripts/controllers/jobs.js"></script> <script src="public/scripts/services/modalservice.js"></script> <script src="public/scripts/controllers/user.js"></script> <script src="public/scripts/services/elements.js"></script> <script src="public/scripts/services/validation.js"></script> <script src="public/scripts/services/auth.js"></script> <!-- endbuild --> </body> </html>
+       ga('send', 'pageview');
+    </script>
+    <script src="scripts/vendor.eef533e0.js"></script>
+	<script src="scripts/scripts.672e6838.js"></script> 
+</body>
+</html>
