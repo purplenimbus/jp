@@ -15,21 +15,22 @@ angular
     'ngResource',
     'ngRoute',
     'ngSanitize',
-    'ngTouch'
+    'ngTouch',
+	'ValidationCtrl'
   ])
   .config(function ($routeProvider) {
     $routeProvider
-      .when('/', {
-        templateUrl: 'views/main.html',
-        controller: 'MainCtrl',
-        controllerAs: 'main'
-      })
-      .when('/jobs', {
-        templateUrl: 'views/jobs.html',
-        controller: 'JobsCtrl',
-        controllerAs: 'jobs'
-      })
-      .otherwise({
-        redirectTo: '/'
-      });
+		.when('/', {
+			templateUrl: 'views/main.html',
+			controller: 'MainCtrl',
+			controllerAs: 'main'
+		})
+		.when('/jobs', {
+			templateUrl: 'views/jobs.html',
+			controller: 'JobsCtrl',
+			controllerAs: 'jobs'
+		})
+		.otherwise({
+			redirectTo: '/'
+		});
   });
