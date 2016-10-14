@@ -7,7 +7,7 @@
  * # MainCtrl
  * Controller of the jpApp
  */
-angular.module('jpApp',[])
+angular.module('jpApp')
 	.controller('MainCtrl', function () {
 	
 

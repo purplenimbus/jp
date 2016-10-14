@@ -16,7 +16,9 @@ angular.module('jpApp')
 					
 				console.log('Form Object',object);
 				
-				$http.post('/api/authenticate').then(	function(result){
+				//console.log($http.post('/api/authenticate'));
+				
+				$http.post('/api/authenticate',object).then(	function(result){
 														console.log(result);
 														deferred.resolve(result);
 													},

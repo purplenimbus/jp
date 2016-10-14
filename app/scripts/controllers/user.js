@@ -8,36 +8,16 @@
  * Controller of the jpApp
  */
 angular.module('jpApp')
-  .controller('UserCtrl', function ($scope,modalService,elements,validation,auth) {
+  .controller('UserCtrl', function ($scope,modal,elements,validation,auth,form) {
     	$scope.signIn	=	function(){
 			var modalType	=	'small',
 				modalTitle	=	'Login',
-				modalBody	=	'',
+				modalBody	=	form.login(),
 				modalFooter	=	elements.button({	type	:	'submit',	cls:	'btn-primary btn-lg btn-block',	ngClick	:	'login($event)'	},'Login');
 				
-				modalBody	+=	'<form>';
-				modalBody	+=	'<div class="row form-group">';
-				modalBody	+=	elements.column(12,elements.form.inputGroup(elements.glyph('user'),{ 	type		:	'email',	
-														cls			:	'input-lg'	,	
-														placeholder	:	'Email'	,	
-														model		:	'',
-														name		:	'email',
-														required	:	true
-													}));
-				modalBody	+=	'</div>';
-				modalBody	+=	'<div class="row form-group">';
-				modalBody	+=	elements.column(12,elements.form.inputGroup(elements.glyph('lock'),{ 	type		:	'password',	
-														cls			:	'input-lg'	,	
-														placeholder	:	'Password'	,	
-														model		:	'',
-														name		:	'Password',
-														required	:	true
-													}));
-				modalBody	+=	'</div>';
-				modalBody	+=	'</form>';
-				
-			modalService.modal(modalType,modalTitle,modalBody,modalFooter,$scope).then(function(result){
+			modal.modal(modalType,modalTitle,modalBody,modalFooter,$scope).then(function(result){
 				console.log(result);
+				
 			});
 		};
 		
@@ -63,8 +43,7 @@ angular.module('jpApp')
 				});
 		};
 		
-		$scope.closeModal	=	function($event){
-			console.log('Modal Close Event',$event);
+		$scope.closeModal	=	function(){
 			angular.element('#modal').modal('hide');
 		};
   });
