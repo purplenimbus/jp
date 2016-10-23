@@ -9,7 +9,5 @@
  */
 angular.module('jpApp')
 	.controller('MainCtrl', function () {
-	
 
-	
 	});

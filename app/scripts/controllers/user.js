@@ -8,7 +8,8 @@
  * Controller of the jpApp
  */
 angular.module('jpApp')
-  .controller('UserCtrl', function ($scope,modal,elements,validation,auth,form) {
+	.controller('UserCtrl', function ($scope,$rootScope,modal,elements,validation,auth,form) {
+		
     	$scope.signIn	=	function(){
 			var modalType	=	'small',
 				modalTitle	=	'Login',
@@ -25,17 +26,27 @@ angular.module('jpApp')
 			//add Spinner
 			$event.preventDefault();
 			
+			console.log($rootScope);
+			
 			var modalContent	=	angular.element($event.currentTarget).parents()[1],
-				form			=	angular.element(modalContent).find('form');
+				form			=	angular.element(modalContent).find('form').serializeArray(),
+				formData		=	{
+					email		:	form[0].value,
+					password	: 	form[1].value
+				};
 				
 				validation.validate(form).then(function(result){
 					//remove spinner
 					angular.element('.spinner').remove();
 					
 					if(result.valid){
-						auth.authenticate(form.serializeArray()).then(function(result){
+						
+						//console.log('Root',$root);
+												
+						auth.authenticate(formData).then(function(result){
 							console.log('Authentication Result',result);
 						});
+						
 					}else{
 						console.log(result);
 					}	
@@ -46,4 +57,4 @@ angular.module('jpApp')
 		$scope.closeModal	=	function(){
 			angular.element('#modal').modal('hide');
 		};
-  });
+	});
